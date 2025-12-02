@@ -1,0 +1,3 @@
+# Lambda runtime includes boto3, but pin version for local development
+boto3>=1.28.0
+

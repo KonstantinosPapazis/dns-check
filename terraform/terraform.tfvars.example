@@ -1,0 +1,48 @@
+# ============================================================================
+# DNS Check Lambda - Example Configuration
+# Copy this file to terraform.tfvars and customize
+# ============================================================================
+
+# Your application domain
+target_domain = "myapp.kostas.com"
+
+# Health endpoint that returns region information
+health_endpoint = "/health"
+
+# HTTP header that your ECS app returns with the region
+# (You may need to add this to your application)
+region_header = "X-Served-By-Region"
+
+# Regions to deploy DNS checks
+regions = {
+  "us-east-1" = {
+    expected_region = "us-east-1"
+    enabled         = true
+  }
+  "eu-west-1" = {
+    expected_region = "eu-west-1"
+    enabled         = true
+  }
+  "ap-southeast-1" = {
+    expected_region = "ap-southeast-1"
+    enabled         = true
+  }
+}
+
+# How often to run the check
+schedule_expression = "rate(5 minutes)"
+
+# Enable CloudWatch alarms
+alarm_enabled = true
+
+# Optional: SNS topic for notifications
+# alarm_sns_topic_arn = "arn:aws:sns:us-east-1:123456789012:alerts"
+
+# Resource tags
+tags = {
+  ManagedBy   = "terraform"
+  Purpose     = "dns-geolocation-check"
+  Environment = "production"
+  Team        = "platform"
+}
+
