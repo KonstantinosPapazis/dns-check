@@ -1,0 +1,17 @@
+# Copy this file to terraform.tfvars and update with your values
+
+app_domain = "myapp.kostas.com"
+regions    = ["us-east-1", "eu-west-1", "ap-southeast-1"]
+primary_region = "us-east-1"
+
+# Health check configuration
+health_check_path = "/health"
+region_header     = "X-Served-From-Region"
+use_https         = true
+
+# Schedule health checks every 5 minutes
+schedule_expression = "rate(5 minutes)"
+
+# Optional: Email for CloudWatch alarms
+alarm_email = "your-email@example.com"
+
